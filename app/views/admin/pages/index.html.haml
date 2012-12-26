@@ -1,0 +1,9 @@
+%h1 Pages list
+%table{ :width => "80%" }
+	%tr{ :style => "font-weight:bold;" }
+		%td Text
+		%td Url
+		- @pages.each do |p|
+			%tr
+				%td=p.text
+				%td=p.url

@@ -1,0 +1,17 @@
+%h1 Registration Form
+= form_for @user do |f|
+	= f.error_messages
+	= f.label :first_name
+	= f.text_field :first_name
+	= f.label :last_name
+	= f.text_field :last_name
+	= f.label :organisation
+	= f.text_field :organisation
+	= f.label :role_title
+	= f.text_field :role_title
+	= f.label :email
+	= f.text_field :email
+	= f.label :phone_number
+	= f.text_field :phone_number
+	= f.submit
+
