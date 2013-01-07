@@ -1,8 +1,13 @@
-%h1 New Page
+%h2 New Page
 = form_for [:admin, @page] do |f|
-	= f.error_messages
+	- @page.errors.full_messages.each do |msg|
+		.alert.alert-error= msg
 	= f.label :text
-	= f.text_field :text
+	= f.text_area :text, :id => "page-textarea"
 	= f.label :url
 	= f.text_field :url
-	= f.submit
+	%p= f.submit 'OK', :class => "btn btn-primary"
+	:javascript
+		$(document).ready(function() {
+			$('#page-textarea').wysihtml5();
+		});

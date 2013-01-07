@@ -1,17 +1,19 @@
-%h1 Users list
-%table{ :width => "80%" }
-	%tr{ :style => "font-weight:bold;" }
-		%td First name
-		%td Last name
-		%td Organisation
-		%td Role
-		%td Email
-		%td Phone number
-		- @users.each do |u|
-			%tr
-				%td=u.first_name
-				%td=u.last_name
-				%td=u.organisation
-				%td=u.role_title
-				%td=u.email
-				%td=u.phone_number	        
+%h2 Users list
+%table.table.table-hover
+	%thead
+		%tr
+			%th First name
+			%th Last name
+			%th Organisation
+			%th Role
+			%th Email
+			%th Phone number
+	%tbody		
+	-@users.each do |u|
+		%tr
+			%td=u.first_name
+			%td=u.last_name
+			%td=u.organisation
+			%td=u.role_title
+			%td=u.email
+			%td=u.phone_number

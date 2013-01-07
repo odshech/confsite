@@ -1,0 +1,18 @@
+%h2 Navigation bar Links list
+%table.table.table-hover
+	%thead
+		%tr
+			%th Name
+			%th Url
+			%th Postion
+			%th Edit
+			%th Delete
+	%tbody
+	- @navbarlinks.each do |n|
+		%tr
+			%td=link_to n.name, admin_navbarlink_path(n)
+			%td=n.url
+			%td=n.position
+			%td=link_to  'edit', edit_admin_navbarlink_path(n)
+			%td=link_to 'delete', [:admin, n ], method: :delete, data: { confirm: "Are You sure?" }
+%p.btn.btn-primary=link_to 'Add Link', new_admin_navbarlink_path

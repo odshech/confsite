@@ -1,17 +1,36 @@
-%h1 Registration Form
-= form_for @user do |f|
-	= f.error_messages
-	= f.label :first_name
-	= f.text_field :first_name
-	= f.label :last_name
-	= f.text_field :last_name
-	= f.label :organisation
-	= f.text_field :organisation
-	= f.label :role_title
-	= f.text_field :role_title
-	= f.label :email
-	= f.text_field :email
-	= f.label :phone_number
-	= f.text_field :phone_number
-	= f.submit
-
+%h2 Registration Form
+= form_for @user , :html => {:class => "form-horizontal"} do |f|
+	- @user.errors.full_messages.each do |msg|
+		.alert.alert-error= msg 
+	.control-group
+		.control-label
+			= f.label :first_name
+		.controls
+			= f.text_field :first_name
+	.control-group
+		.control-label
+			= f.label :last_name	
+		.controls
+			= f.text_field :last_name
+	.control-group
+		.control-label				
+			= f.label :organisation
+		.controls
+			= f.text_field :organisation
+	.control-group
+		.control-label				
+			= f.label :role_title
+		.controls	
+			= f.text_field :role_title
+	.control-group
+		.control-label								
+			= f.label :email
+		.controls	
+			= f.text_field :email
+	.control-group
+		.control-label				
+			= f.label :phone_number
+		.controls	
+			= f.text_field :phone_number
+	%br	
+	%p= f.submit 'OK', :class => "btn btn-primary"

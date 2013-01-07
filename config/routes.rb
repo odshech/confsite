@@ -1,13 +1,16 @@
 Confsite::Application.routes.draw do
+  devise_for :admins
+
+  resources :navbarlinks, only: ["index","show"]
   resources :pages, only: "show"
   resources :users, only: ["new","create"]
   namespace :admin do
     resources :users, only: "index"
     resources :pages
+    resources :navbarlinks
   end
 
   root :to => 'users#new'
-
   #get "pages/home"
   
   # The priority is based upon order of creation:

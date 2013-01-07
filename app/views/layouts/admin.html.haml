@@ -1,0 +1,19 @@
+!!!
+%html
+	%head
+		%title Confsite
+		= stylesheet_link_tag "application", :media => "all" 
+		= javascript_include_tag "application" 
+		= csrf_meta_tags 
+	
+	%body
+		.container
+			-flash.each do |key, value|
+				.alert.alert-=key = value
+			#admin_nav
+			-if admin_signed_in?
+				=link_to "Sign out", destroy_admin_session_path, :method => :delete
+			-else
+				=link_to "Sign up", new_admin_registration
+				=link_to "sign in", new_admin_session_path
+			=yield

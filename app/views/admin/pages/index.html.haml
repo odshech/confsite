@@ -1,9 +1,16 @@
-%h1 Pages list
-%table{ :width => "80%" }
-	%tr{ :style => "font-weight:bold;" }
-		%td Text
-		%td Url
-		- @pages.each do |p|
-			%tr
-				%td=p.text
-				%td=p.url
+%h2 Pages list
+%table.table.table-hover
+	%thead
+		%tr
+			%th Text
+			%th Url
+			%th Edit
+			%th Delete
+	%tbody
+	-@pages.each do |p|
+		%tr
+			%td=link_to strip_tags(p.text).truncate(40), admin_page_path(p)
+			%td=p.url
+			%td=link_to  'edit', edit_admin_page_path(p)
+			%td=link_to 'delete', [:admin, p ], method: :delete, data: { confirm: "You sure?" }
+%p.btn.btn-primary=link_to 'Add Page', new_admin_page_path

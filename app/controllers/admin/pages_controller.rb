@@ -1,11 +1,12 @@
-class Admin::PagesController < ApplicationController
+class Admin::PagesController < AdminController
+  before_filter :find_page_by_url
 
 	def index
 		 @pages = Page.all
 	end	
 
   def show
-  	@page = Page.find(params[:id])
+  	@page = find_page_by_url
   end
 
   def new
@@ -15,7 +16,7 @@ class Admin::PagesController < ApplicationController
 	def create
     @page = Page.new(params[:page])
     if @page.save
-			flash[:success] = "Your has been created sucessfully!"
+			flash[:success] = "Your page has been created sucessfully!"
       redirect_to :action => "index"
     else
       render 'new'
@@ -23,11 +24,11 @@ class Admin::PagesController < ApplicationController
   end	
 
   def edit
-		@page = Page.find(params[:id])
+		@page = find_page_by_url
   end
 
   def update
-		@page = Page.find(params[:id])
+		@page = find_page_by_url
     if @page.update_attributes(params[:page])
 			flash[:success] = "Your page has been updated sucessfully!"
       redirect_to :action => "index"
@@ -37,9 +38,13 @@ class Admin::PagesController < ApplicationController
   end	
 
   def destroy
-  	Page.find(params[:id]).destroy
+  	@page = find_page_by_url.destroy
     flash[:success] = "Page destroyed."
-    render 'index'
+    redirect_to :action => "index"
   end  
 
+
+  def find_page_by_url
+    Page.find_by_url(params[:id])
+  end  
 end
