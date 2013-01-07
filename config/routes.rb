@@ -11,6 +11,8 @@ Confsite::Application.routes.draw do
   end
 
   root :to => 'users#new'
+
+  match "/admin/home" => "admin#home"
   #get "pages/home"
   
   # The priority is based upon order of creation:

@@ -4,16 +4,19 @@
 		%title Confsite
 		= stylesheet_link_tag "application", :media => "all" 
 		= javascript_include_tag "application" 
-		= csrf_meta_tags 
+		= javascript_include_tag "bootstrap-tab.js"
+		= csrf_meta_tags
 	
 	%body
 		.container
 			.navbar
 				.navbar-inner
-					%ul.nav#myTab
-						%li.active=link_to "Home", "/"		
+					%ul.nav.nav-tabs
+						%li{:class => (current_page?("/") ? 'active' : '')}
+							=link_to "Home", "/"
 						- @navbarlinks.each do |n|
-							%li=link_to n.name, n.url
+							%li{:class => (current_page?("/pages/#{n.url}") ? 'active' : '')}
+								=link_to n.name, "/pages/#{n.url}"
 			- flash.each do |key, value|	
 				.alert.alert-=key = value
 			= yield
