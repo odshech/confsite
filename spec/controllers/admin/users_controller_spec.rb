@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Admin::UsersController do
-	
+
 	before do
 		@user = FactoryGirl.create(:user)
 		@admin = FactoryGirl.create(:admin)
@@ -12,7 +12,7 @@ describe Admin::UsersController do
 
 	it "should show all users" do
 		get :index
-		response.should be_success 
+		response.should be_success
 	end
 
 end
