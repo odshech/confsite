@@ -9,7 +9,7 @@
 	%tbody
 	-@pages.each do |p|
 		%tr
-			%td=link_to strip_tags(p.text).truncate(40), admin_page_path(p)
+			%td=link_to strip_tags(p.text).truncate(75), admin_page_path(p)
 			%td=p.url
 			%td=link_to  'edit', edit_admin_page_path(p)
 			%td=link_to 'delete', [:admin, p ], method: :delete, data: { confirm: "You sure?" }

@@ -1,12 +1,12 @@
 %h2 Edit Page
-= form_for [:admin, @page] do |f| 
+= form_for [:admin, @page] do |f|
 	- @page.errors.full_messages.each do |msg|
-		.alert.alert-error= msg 
+		.alert.alert-error= msg
 	= f.label :text
 	= f.text_area :text, :id => "page-textarea"
 	= f.label :url
 	= f.text_field :url
-	%p= f.submit 'Update', :class => "btn btn-primary" 
+	%p= f.submit 'Update', :class => "btn btn-primary"
 	:javascript
 		$(document).ready(function() {
 			$('#page-textarea').wysihtml5();

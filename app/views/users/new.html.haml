@@ -1,36 +1,38 @@
 %h2 Registration Form
-= form_for @user , :html => {:class => "form-horizontal"} do |f|
-	- @user.errors.full_messages.each do |msg|
-		.alert.alert-error= msg 
-	.control-group
-		.control-label
-			= f.label :first_name
-		.controls
-			= f.text_field :first_name
-	.control-group
-		.control-label
-			= f.label :last_name	
-		.controls
-			= f.text_field :last_name
-	.control-group
-		.control-label				
-			= f.label :organisation
-		.controls
-			= f.text_field :organisation
-	.control-group
-		.control-label				
-			= f.label :role_title
-		.controls	
-			= f.text_field :role_title
-	.control-group
-		.control-label								
-			= f.label :email
-		.controls	
-			= f.text_field :email
-	.control-group
-		.control-label				
-			= f.label :phone_number
-		.controls	
-			= f.text_field :phone_number
-	%br	
-	%p= f.submit 'OK', :class => "btn btn-primary"
+.span6
+	= form_for @user , :html => { :class => "form-horizontal" } do |f|
+		- @user.errors.full_messages.each do |msg|
+			.alert.alert-error= msg
+		.control-group
+			.control-label
+				= f.label :first_name
+			.controls
+				= f.text_field :first_name
+		.control-group
+			.control-label
+				= f.label :last_name
+			.controls
+				= f.text_field :last_name
+		.control-group
+			.control-label
+				= f.label :organisation
+			.controls
+				= f.text_field :organisation
+		.control-group
+			.control-label
+				= f.label :role_title
+			.controls	
+				= f.text_field :role_title
+		.control-group
+			.control-label
+				= f.label :email
+			.controls
+				= f.text_field :email
+		.control-group
+			.control-label
+				= f.label :phone_number
+			.controls
+				= f.text_field :phone_number
+		.control-group
+			.controls
+				%button= f.submit 'OK', :class => "btn btn-primary"

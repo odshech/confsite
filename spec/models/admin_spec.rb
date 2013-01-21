@@ -2,9 +2,7 @@ require 'spec_helper'
 
 describe Admin do
 
-	before do
-		@admin = FactoryGirl.build(:admin)
-	end
+	before { @admin = FactoryGirl.build(:admin) }
 
 	subject { @admin }
 
@@ -12,15 +10,19 @@ describe Admin do
 		expect { @admin.save }.to change { Admin.count }.by(1)
 	end
 
-	it "first name should not be blank" do 
-		@admin.first_name = ''
-		@admin.save
-		@admin.should_not be_valid
+	it { should be_valid }
+
+	it { should respond_to(:first_name) }
+	it { should respond_to(:last_name) }
+
+	describe "first name is missing" do
+		before { @admin.first_name = " " }
+		it { should_not be_valid }
 	end
 
-	it "last name should not be blank" do 
-		@admin.last_name = ''
-		@admin.save
-		@admin.should_not be_valid
+	describe "last name is missing" do
+		before { @admin.last_name = " " }
+		it { should_not be_valid }
 	end
+
 end

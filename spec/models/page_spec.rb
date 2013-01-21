@@ -12,15 +12,20 @@ describe Page do
 		expect { @page.save }.to change { Page.count }.by(1)
 	end
 
-	it "text should not be blank" do 
-		@page.text = ''
-		@page.save
-		@page.should_not be_valid
+	it { should be_valid }
+
+	it { should respond_to(:text) }
+	it { should respond_to(:url) }
+
+
+	describe "text should not be blank" do
+		before { @page.text = ' ' }
+		it { should_not be_valid }
 	end
 
-	it "url should not be blank" do 
-		@page.url = ''
-		@page.save
-		@page.should_not be_valid
+	describe "url should not be blank" do
+		before { @page.url = ' ' }
+		it { should_not be_valid }
 	end
+
 end

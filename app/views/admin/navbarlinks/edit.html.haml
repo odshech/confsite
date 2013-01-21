@@ -1,4 +1,4 @@
-%h2 Edit Nav bar  Link
+%h2 Edit Nav bar link
 = form_for [:admin, @navbarlink] do |f| 
 	- @navbarlink.errors.full_messages.each do |msg|
 		.alert.alert-error= msg 
